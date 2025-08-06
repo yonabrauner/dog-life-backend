@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// App users (dog owners/walkers)
+//model User {
+//  id        Int      @id @default(autoincrement())
+//  email     String   @unique
+//  nickname  String
+//  createdAt DateTime @default(now())
+//  walks     Walk[]   
+//}
+
+// Each dog belongs to an owner (User)
+model Dog {
+  id         Int           @id @default(autoincrement())
+  name       String        @unique
+  picture    String?       
+  activities DogActivity[]
+}
+
+// Each walk has 1 walker (User) and multiple dogs (via DogActivity)
+// add later when implementing user: walker     User          @relation(fields: [walkerId], references: [id])// and change walkerName to walkerId
+model Walk {
+  id         Int           @id @default(autoincrement())
+  date       DateTime
+  duration   Int           // in minutes
+  walkerName String
+  dogActivities DogActivity[] // dogs that joined (pee/poop data)
+  notes      String?
+}
+
+// DogActivity links a Dog to a Walk (pee/poop tracking)
+model DogActivity {
+  id      Int     @id @default(autoincrement())
+  walkId  Int
+  //dogName String
+  dogId Int
+  pee     Boolean @default(false)
+  poop    Boolean @default(false)
+
+  walk    Walk    @relation(fields: [walkId], references: [id])
+  dog    Dog     @relation(fields: [dogId], references: [id])
+}
