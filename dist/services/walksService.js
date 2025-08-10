@@ -4,7 +4,7 @@ export async function getAllWalks() {
     return await prisma.walk.findMany({
         orderBy: { date: "desc" },
         include: {
-            activities: {
+            dogActivities: {
                 include: { dog: { select: { name: true, picture: true } } }
             }
         }
