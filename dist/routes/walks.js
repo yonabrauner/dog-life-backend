@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllWalks, createWalk, getLastWalk, getLastWalkWithActivity } from "../services/walksService";
+import { getAllWalks, createWalk, getLastWalk, getLastWalkWithActivity } from "../services/walksService.js";
 import { PrismaClient } from "@prisma/client";
 const walksRouter = express.Router();
 const prisma = new PrismaClient();
