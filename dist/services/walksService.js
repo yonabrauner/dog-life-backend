@@ -1,4 +1,4 @@
-import { prisma } from "../db";
+import { prisma } from "../db.js";
 // Get all walks, with walker and dogs
 export async function getAllWalks() {
     return await prisma.walk.findMany({
