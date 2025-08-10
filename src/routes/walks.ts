@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllWalks, createWalk, getLastWalk, getLastWalkWithActivity, getTopWalker } from "../services/walksService.ts";
+import { getAllWalks, createWalk, getLastWalk, getLastWalkWithActivity, getTopWalker } from "../services/walksService.js";
 
 
 const walksRouter = express.Router();

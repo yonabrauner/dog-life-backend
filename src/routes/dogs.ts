@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllDogs } from "../services/dogsService.ts";
+import { getAllDogs } from "../services/dogsService.js";
 
 
 const dogsRouter = express.Router();

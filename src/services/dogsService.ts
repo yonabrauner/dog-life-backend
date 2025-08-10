@@ -1,4 +1,4 @@
-import { prisma } from "../db.ts";
+import { prisma } from "../db.js";
 
 // Get all walks, with walker and dogs
 export async function getAllDogs() {
